@@ -1,0 +1,7 @@
+<% if (is_home()) { %>
+<section itemscope itemtype="https://schema.org/Blog">
+  <% page.posts.each(function (post) { %>
+    <%- partial('_partials/article-excerpt', { item: post }) %>
+  <% }) %>
+</section>
+<% } %>

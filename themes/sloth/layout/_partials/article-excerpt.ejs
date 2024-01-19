@@ -1,0 +1,39 @@
+<%
+    let url = url_for(item.path);
+%>
+<article itemscope itemtype="https://schema.org/BlogPosting" itemid="<%= url + '#BlogPosting' %>">
+    <% if (item.keywords) { %>
+    <meta itemprop="keywords" content="<%= item.keywords %>" />
+    <% } %>
+    <meta itemprop="words" contents="<%= symbolsCount(item) %>"  />
+    <!-- Title -->
+    <h2>
+        <a href="<%= url %>" itemprop="url">
+            <span itemprop="name"><%= item.title %></span>
+        </a>
+    </h2>
+
+    <!-- Date and Author -->
+    <p>
+        Pulished <span itemprop="datePublished"><%= item.date.format(config.date_format) %></span>
+        <% if (item.author) { %>
+        by <span itemprop="author" itemscope itemtype="https://schema.org/Person">
+`           <span itemprop="name">
+                <%- item.author %>
+            </span>
+        </span>
+        <% } %>
+    </p>
+
+    <!-- Content -->
+    <%- item.excerpt || item.content %>
+
+    <!-- Read More Link for Excerpts -->
+    <% if (item.excerpt) { %>
+        <p>
+            <a href="<%= url %>">
+                <%= theme.excerpt_link %>
+            </a>
+        </p>
+    <% } %>
+</article>

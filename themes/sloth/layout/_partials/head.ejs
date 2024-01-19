@@ -1,0 +1,53 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <%
+        let keywords = page.keywords || config.keywords;
+        let description = page.description || config.description;
+
+        let author;
+        if (theme.info && theme.info.author) {
+            author = theme.info.author;
+        } else if (config.author) {
+            author = config.author;
+        }
+
+        let title;
+        if (theme.info && theme.info.title) {
+            title = theme.info.title;
+        } else if (config.title) {
+            title = config.title;
+        } else {
+            title = "Skittish Sloth's Code Blog";
+        }
+
+        if (page.title) {
+            title = page.title + " | " + title;
+        }
+    %>
+
+    <% if (keywords) { %>
+    <meta name="keywords" content="<%= keywords %>">
+    <% } %>
+
+    <% if (description) { %>
+    <meta name="description" content="<%= description %>">
+    <% } %>
+
+    <% if (author) { %>
+    <meta name="author" content="<%= author %>">
+    <% } %>
+
+    <!--- Seo Part-->
+    <meta name="robots" content="index,follow">
+    <meta name="googlebot" content="index,follow">
+    <meta name="revisit-after" content="1 days">
+
+    <title><%= title %></title>
+
+    <!--- Font Part-->
+    
+    <!--- Fontawesome Part-->
+</head>
+

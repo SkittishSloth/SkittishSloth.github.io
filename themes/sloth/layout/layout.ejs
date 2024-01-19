@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="<%= config.language %>">
+<%- partial('_partials/head') %>
+
+<%
+  let schema = page.schema || "http://schema.org/WebPage"
+%>
+<body itemscope itemtype="<%= schema %>"">
+<%- partial('_partials/header') %>
+
+<%- body %>
+</body>
+</html>
