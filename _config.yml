@@ -107,3 +107,8 @@ sitemap:
   rel: true
   tags: true
   categories: true
+
+markdown:
+  preset: 'default'
+  render:
+    breaks: false
