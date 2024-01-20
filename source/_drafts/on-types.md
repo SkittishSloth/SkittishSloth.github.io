@@ -3,6 +3,7 @@ title: On Types
 tags:
 ---
 
+<section>
 Types are often background noise in our day-to-day development work. Yeah, they're
 there, and we think about them superficially - I need an `int` for this, or a `List`
 for that. We give them lip service when we talk about classes, talking about "data"
@@ -11,6 +12,7 @@ type theory or working on a programming language, I'd bet good money that you do
 spend a lot of mental energy on types.
 
 Let's change that, shall we?
+</section>
 <!-- more -->
 
 <section>
@@ -31,18 +33,61 @@ on data types, but here's one of the definitions it gives:
 {% endblockquote %}
 
 There's four other definitions there, but they mostly break down to the same thing: data
-and behaviors. (Except `Syntactic`, which even Wiki says doesn't help to provide an 
-"intuitive meaning"). So, what is data? What are behaviors?
+and behaviors. Except `Syntactic`, which Wiki says doesn't help to provide an "intuitive meaning". 
+That's technically correct, but it's still an interesting definition that we'll touch on
+later.
+</section>
 
 <section>
-<h4>Data</h4>
+<h3>Ready Your Sets and Go</h3>
 
+The important word in that definition is easy to gloss over: `set`. A type is a _set of values_. 
+I'm pretty sure you know what a set is, but to make sure we're on the same page, a set
+is a collection of distinct elements. It may have no elements - the empty set. 
+It may have an infinite number of elements, like integers. 
+
+There's one additional property of sets we want to pay attention to: _cardinality_.
+This is the number of elements in the set - infinity for integers, zero for the empty set.
+Cardinality is very important for what we're going to discuss. It isn't used in a 
+terribly complicated manner, but it's very important.
+
+There's also some operations that work on sets you want to keep in mind, namely union
+and multiplication. Those will be useful later on as well. Quick refresher: union takes
+two sets and combines them; multiplication creates a "set of sets" in a way, where each 
+internal set contains an element from each set, for every element in each set.
+</section>
+
+<section>
+<h3>But ... Types?</h3>
+
+Yes, yes, we're getting to that. 
+
+If a type is a set of values, let's see what that looks like. We'll start with a simple case:
+`boolean`. Two possible values, `true` and `false`, so we could write it out as a set like this:
+
+{% codeblock %}
+{ true, false }
+{% endcodeblock %}
+
+This has a cardinality of two - two possible values for anything declared
+as a `boolean`. Simple enough, right? Let's do a contrived three-valued set:
+
+{% codeblock %}
+StopLight = { RED, YELLOW, GREEN }
+{% endcodeblock %}
+
+Three possible values, cardinality of three. You can extend this to other types yourself,
+but this is where the "Representation" definition of a data type becomes a bit more
+meaningful. Integers and real numbers are both infinite sets. It's a little
+difficult to represent such a range on a computer, so instead we're normally
+limited by the hardware. Sticking with small types to keep things simple, in Java you have the `byte` and `short` types:
+
+Type | Size (bits) | Minimum| Maximum | Range
+`byte` | 8 | -128 | 127 | 255
+`short` | 16 | -32,678 | 32,677 | 65,355
 
 </section>
 
-<secion>
-<h4>Behaviors</h4>
-
-</section>
-
-</section>
+Notes:
+- maybe break into multiple articles
+- include the other data type definitions 
