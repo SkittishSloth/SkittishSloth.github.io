@@ -18,30 +18,12 @@ Let's change that, shall we?
 <section>
 <h3>What's a Type?</h3>
 
-Wikipedia has a lot of good information on data types; here's the definitions it gives, 
-and we'll go over each in turn:
+Let's start with the basics: data and behaviors. A type tells us that we're expecting
+something with a value and that does things. Wikipedia has a lot of good information
+on data types, but here's one of the definitions it gives:
 
 {% blockquote Wikipedia https://en.wikipedia.org/wiki/Data_type#Definition  Data Type -> Definition %}
 <dl>
-    <dt>Syntactic</dt>
-    <dd>
-        A type is a purely syntactic label associated with a variable when it is declared. Although 
-        useful for advanced type systems such as substructural type systems, such definitions provide 
-        no intuitive meaning of the types.
-    </dd>
-    <dt>Representation</dt>
-    <dd>
-        A type is defined in terms of a composition of more primitive types—often machine types.
-    </dd>
-    <dt>Representation and behaviour</dt>
-    <dd>
-        A type is defined as its representation and a set of operators manipulating these representations.
-    </dd>
-    <dt>Value space</dt>
-    <dd>
-        A type is a set of possible values which a variable can possess. Such definitions make it possible 
-        to speak about (disjoint) unions or Cartesian products of types.
-    </dd>
     <dt>Value space and behaviour</dt>
     <dd>
         A type is a set of values which a variable can possess and a set of functions 
@@ -50,33 +32,10 @@ and we'll go over each in turn:
 </dl>
 {% endblockquote %}
 
-<section>
-<h4>Syntactic</h4>
-{% blockquote %}
-A type is a purely syntactic label associated with a variable when it is declared.
-{% endblockquote %}
-
-This is probably the most appropriate definition when it comes to our day-to-day
-uses of types. It's something we use to declare a variable:
-
-{% codeblock %}
-final String name = "Sloth";
-{% endcodeblock %}
-
-We're declaring a variable and saying that it's of type `String`. The compiler is 
-going to take that information and then make sure all uses of `name` correspond to
-other places where we declare something is a `String`, such as a method parameter
-or another variable assignment. 
-</section>
-
-<section>
-<h4>Representation</h4>
-{% blockquote %}
-A type is defined in terms of a composition of more primitive types—often machine types.
-{% endblockquote %}
-
-
-</section>
+There's four other definitions there, but they mostly break down to the same thing: data
+and behaviors. Except `Syntactic`, which Wiki says doesn't help to provide an "intuitive meaning". 
+That's technically correct, but it's still an interesting definition that we'll touch on
+later.
 </section>
 
 <section>
