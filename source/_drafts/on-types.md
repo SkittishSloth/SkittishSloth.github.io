@@ -183,8 +183,82 @@ StopLight = { RED, YELLOW, GREEN }
 MySumType = (Boolean + StopLight) = { true, false, RED, YELLOW, GREEN }
 {% endcodeblock %}
 
+Representing sum types in Java is a little tricky at first, but not a big deal when you get the hang of it.
+Let's create a sum type based on that smll example:
 
+{% codeblock lang:java line_number:false %}
+public abstract class MySumType {
 
+  public static MySumType of(boolean value) {
+    return new BoolType(value);
+  }
+  
+  public static MySumType of(StopLight value) {
+    return new StopLightType(value);
+  }
+  
+  private static final class BoolType extends MySumType {
+    boolean value:
+  }
+  
+  private static final class StopLightType extends MySumType {
+    StopLight value;
+  }
+}
+{% endcodeblock %}
+
+Now, this is admittedly totally useless, but it's still a legitimate sum type - every instance of `MySumType` has
+either a `boolean` value or a `StopLight` value. We can make something a little more useful though:
+
+{% codeblock lang:java line_number:false %}
+public abstract class Option<T> {
+
+  public static <T> Option<T> ofNullable(final T value) {
+    if (value == null) {
+      return none();
+    } else {
+      return some(value);
+    }
+  }
+  
+  public static <T> Option<T> some(final T value) {
+    return new Some<>(value);
+  }
+  
+  public static <T> Option<T> none() {
+    return new None<>();
+  }
+  
+  public abstract <U> Option<U> map(Function<T, U> mapper);
+  
+  private static final class Some<T> extends Option<T> {
+    private final T value;
+    
+    Some(final T value) {
+      this.value = value;
+    }
+    
+    @Override
+    public <U> Option<U> map(final Function<T, U> mapper) {
+      return new Some<>(mapper.apply(value));
+    }
+  }
+  
+  private static final class None<T> extends Option<T> {
+    
+    @Override
+    @SuppressWarnings("unchecked")
+    public <U> Option<U> map(final Function<T, U> mapper) {
+      return (Option<U>) this;
+    }
+  }
+}
+{% endcodeblock %}
+
+This is an extremely simplified Option monad, and it's a great example of a sum type. We have the `None` class - in the 
+real world, we'd do a singleton here - and there's only one possible value. For `Some`, it's a little more complicated -
+it's a generic type, so the cardinality depends
+entirely on the cardinality of `T`.
 </section>
 
 </section>
