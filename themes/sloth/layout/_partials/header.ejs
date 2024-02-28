@@ -1,12 +1,27 @@
-<header>
-    <h1><%= config.title %></h1>
-    <nav>
-        <ul>
-            <% for (name in theme.menu) { %>
-                <li>
-                    <a href="<%- url_for(theme.menu[name]) %>"><%= name %></a>
-                </li>
-            <% } %>
-        </ul>
-    </nav>
+<header itemscope itemtype="https://schema.org/WebSite" class="site">
+    <h1 itemprop="name"><%= config.title %></h1>
+    <p style="margin-top: 5px;"> <%= config.subtitle %> 
+    </p>
 </header>
+
+<nav class="topnav" itemscope itemtype="https://schema.org/SiteNavigationElement">
+    <div class="right">
+        <div class="float">
+    <% 
+        let menuKeys = Object.keys(theme.menu);
+        let lastIndex = menuKeys.length - 1; 
+    %>
+    <% for (var idx = 0; idx <= lastIndex; ++idx) { %>
+        <% var name = menuKeys[idx]; %>
+        
+        <% if (idx < lastIndex) { %>
+            <a href="<%- url_for(theme.menu[name]) %>" itemprop="url" itemprop="name"><%= name %></a> |
+        <% } else { %>
+            <a href="<%- url_for(theme.menu[name]) %>" itemprop="url" itemprop="name"><%= name %></a>
+        <% } %>
+    <% } %>
+        </div>
+    </div>
+</nav>
+
+<hr />

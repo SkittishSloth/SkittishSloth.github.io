@@ -44,11 +44,15 @@
     <meta name="googlebot" content="index,follow">
     <meta name="revisit-after" content="1 days">
 
-    <link rel="preload" href="<%= url_for(theme.css) %>/main.css" as="style">
     <title><%= title %></title>
 
     <!--- Font Part-->
     
     <!--- Fontawesome Part-->
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cinzel|Fauna+One">
+    
+    <link rel="preload" href="<%= url_for(theme.css) %>/style.css" as="style">
+    <link rel="stylesheet" href="<%= url_for(theme.css) %>/style.css">
 </head>
 
