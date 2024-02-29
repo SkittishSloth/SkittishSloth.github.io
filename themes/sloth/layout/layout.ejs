@@ -7,17 +7,15 @@
 %>
 <body itemscope itemtype="<%= schema %>"">
 <%- partial('_partials/header') %>
+<div class="main-body">
+<div class="left-sidebar"></div>
+<div class="content">
   <main>
-    <div class="left-sidebar">
-      
-    </div>
-    <div class="content">
       <%- body %>
-    </div>
-
-    <div class="right-sidebar">
-      
-    </div>
   </main>
+  <%- partial('_partials/footer') %>
+</div>
+<div class="right-sidebar"></div>
+</div>
 </body>
 </html>
