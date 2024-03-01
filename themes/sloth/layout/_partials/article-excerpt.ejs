@@ -1,11 +1,12 @@
 <%
     let url = url_for(item.path);
 %>
-<article itemscope itemtype="https://schema.org/BlogPosting" itemid="<%= url + '#BlogPosting' %>">
+<article class="card" itemscope itemtype="https://schema.org/BlogPosting" itemid="<%= url + '#BlogPosting' %>">
     <% if (item.keywords) { %>
     <meta itemprop="keywords" content="<%= item.keywords %>" />
     <% } %>
     <meta itemprop="words" contents="<%= symbolsCount(item) %>"  />
+    <div class="container">
     <!-- Title -->
     <h2>
         <a href="<%= url %>" itemprop="url">
@@ -36,4 +37,5 @@
             </a>
         </p>
     <% } %>
+    </div>
 </article>

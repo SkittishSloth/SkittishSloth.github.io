@@ -1,7 +1,7 @@
 <article itemscope itemtype="https://schema.org/BlogPosting">
     <meta itemprop="wordCount" content="<%= symbolsCount(item) %>" />
     <header>
-        <h2 itemprop="name"><%- item.title %></h2>
+        <h1 itemprop="name"><%- item.title %></h1>
         <div>
             <p>
                 Published <time itemprop="datePublished" datetime="<%- item.date.format() %>"><%= item.date.format('dddd, MMMM Do, YYYY hh:mm zz') %></time>.

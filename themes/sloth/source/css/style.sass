@@ -6,11 +6,11 @@ body
     background-color: #fff /* White background */
     color: #000 /* Black text */
     margin: 0
-    margin-left: 4em
-    margin-right: 4em
-    padding: 20px
-    padding-left: 40px
-    padding-right: 40px
+    margin-left: 0em
+    margin-right: 0em
+    padding: 00px
+    padding-left: 0px
+    padding-right: 0px
 
 header.site
     padding: 10px 0px
@@ -32,10 +32,10 @@ a, a:visited
 nav.topnav
     overflow: hidden
     width: 100%
-    text-align: right
+    // text-align: right
 
-    div.right
-        float: right
+    // div.right
+    //     float: left
     
     div.float
         float: left
@@ -54,17 +54,60 @@ div.main-body
 .left-sidebar
     padding: 10px
     flex: 1
+    background-color: #000
 
 .right-sidebar
     padding: 10px
     flex: 1
+    background-color: #000
 
-blockquote
-    footer
-        text-align: left 
 
-        cite
-            padding-left: 10px
 
 footer
     text-align: center
+
+.card 
+    box-shadow: 0 4px 8px 0 rgb(0, 0, 0, 0.2)
+    transition: 0.3
+
+.card:hover
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.3)
+
+.card .container
+    padding: 2px 16px
+
+dl
+    margin: 0
+    padding: 0
+
+dt
+    font-size: 1.25em
+    margin: 0.5em 0 0 0
+    padding: 0
+dd
+    display: list-item
+    list-style: none
+    margin: 0 0 0 2em
+    padding: 0.5em
+
+article
+    max-inline-size: 80ch
+    header
+        h1
+            text-align: center
+        div.metadata
+            text-align: right
+            font-size: 0.8em
+            font-style: italic
+    section.body
+
+        blockquote
+            background-color: #EEE
+            padding: 2px 16px
+            padding-bottom: 20px
+
+            footer
+                text-align: left 
+                font-style: italic
+                cite
+                    padding-left: 10px

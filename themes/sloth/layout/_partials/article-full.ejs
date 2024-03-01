@@ -1,8 +1,8 @@
 <article itemscope itemtype="https://schema.org/BlogPosting">
     <meta itemprop="wordCount" content="<%= symbolsCount(item) %>" />
     <header>
-        <h2 itemprop="name"><%- item.title %></h2>
-        <div>
+        <h1 itemprop="name"><%- item.title %></h1>
+        <div class="metadata">
             <p>
                 Published <time itemprop="datePublished" datetime="<%- item.date.format() %>"><%= item.date.format('dddd, MMMM Do, YYYY hh:mm zz') %></time>.
             </p>
@@ -12,7 +12,7 @@
         </div>
     </header>
 
-    <section itemprop="articleBody">
+    <section class="body" itemprop="articleBody">
         <%- item.content %>
     </section>
     
