@@ -3,3 +3,19 @@ languageCode: en-us
 title: The Slothful Coder
 
 theme: "sloth"
+
+taxonomies:
+  category: categories
+  tag: tags
+  design-principles: "design-principles"
+
+menus:
+  main:
+    - name: Home
+      pageRef: /
+    - name: Posts
+      pageRef: /posts
+    - name: Tags
+      pageRef: /tags
+    - name: Design Principles
+      pageRef: /design-principles

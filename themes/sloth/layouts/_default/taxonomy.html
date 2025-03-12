@@ -1,0 +1,24 @@
+{{ define "main" }}
+<main itemscope itemtype="http://schema.org/CollectionPage">
+    <header>
+        <h1 itemprop="name">{{ .Title }}</h1>
+        <em>taxonomy</em>
+    </header>
+    {{ with .Content }}
+    <div itemprop="description">
+        {{ . }}
+    </div>
+    {{ end }}
+
+    {{ if .Pages }}
+    <h2>Entries</h2>
+    <ul>
+        {{ range .Pages }}
+        <li itemprop="hasPart" itemscope itemtype="http://schema.org/Article">
+            <a itemprop="url" href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+        </li>
+        {{ end }}
+    </ul>
+    {{ end }}
+</main>
+{{ end }}

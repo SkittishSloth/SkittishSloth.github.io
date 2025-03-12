@@ -7,17 +7,15 @@ For a given taxonomy, renders a list of terms assigned to the page.
 @example: {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
 */}}
 
-{{- $page := .page }}
-{{- $taxonomy := .taxonomy }}
-
-{{- with $page.GetTerms $taxonomy }}
-  {{- $label := (index . 0).Parent.LinkTitle }}
-  <div>
-    <div>{{ $label }}:</div>
-    <ul>
-      {{- range . }}
-        <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
-      {{- end }}
-    </ul>
-  </div>
-{{- end }}
+<h2>partials -> Terms</h2>
+{{ if (isset . "taxonomy") }}
+  {{ if eq .taxonomy "tags" }}
+    {{ range (.page.GetTerms .taxonomy) }}
+      <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+    {{ end }}
+  {{ else if eq .taxonomy "design-principles" }}
+    {{ range (.page.GetTerms .taxonomy) }}
+      <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a>
+    {{ end }}
+  {{ end }}
+{{ end }}
