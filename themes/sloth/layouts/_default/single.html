@@ -1,12 +1,32 @@
 {{ define "main" }}
-  <h1>{{ .Title }}</h1>
-  <p><em>single</em></p>
-  {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
+<article itemscope itemtype="http://schema.org/BlogPosting">
+  <h1 itemprop="headline">{{ .Title }}</h1>
+
+    {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
   {{ $dateHuman := .Date | time.Format ":date_long" }}
-  <time datetime="{{ $dateMachine }}">{{ $dateHuman }}</time>
+  <p itemprop="datePublished" datetime="{{ $dateMachine }}">Published: {{ $dateHuman }}</p>
 
-  {{ .Content }}
-  {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+  {{ if ne .Date .Lastmod }}
+  {{ $dateModifiedMachine := .Lastmod | time.Format "2006-01-02T15:04:05-07:00" }}
+  <p itemprop="dateModified" datetime="{{ $dateModifiedMachine }}">Last Modified: {{ .Lastmod | time.Format ":date_long" }}</p>
+  {{ end }}
 
-  {{ partial "terms.html" (dict "taxonomy" "design-principles" "page" .) }}
+
+    <div itemprop="articleBody">
+        {{ .Content }}
+    </div>
+
+    <aside>
+        <h3>Tags</h3>
+        <div class="terms-container">
+            {{ partial "terms.html" (dict "taxonomy" "tags" "page" .) }}
+        </div>
+
+        <h3>Design Principles</h3>
+        <div class="terms-container">
+            {{ partial "terms.html" (dict "taxonomy" "design-principles" "page" .) }}
+        </div>
+    </aside>
+    <footer itemscope itemtype="http://schema.org/Person"><span itemprop="name">Hugo User</span></footer>
+</article>
 {{ end }}

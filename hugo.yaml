@@ -13,9 +13,13 @@ menus:
   main:
     - name: Home
       pageRef: /
+      weight: 10
     - name: Posts
       pageRef: /posts
+      weight: 20
     - name: Tags
       pageRef: /tags
+      weight: 30
     - name: Design Principles
       pageRef: /design-principles
+      weight: 40

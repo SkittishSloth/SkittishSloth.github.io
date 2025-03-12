@@ -1,9 +1,10 @@
 body {
   color: #222;
-  font-family: sans-serif;
-  line-height: 1.5;
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.6;
   margin: 1rem;
   max-width: 768px;
+  font-size: 18px;
 }
 
 header {
@@ -17,6 +18,34 @@ footer {
 }
 
 a {
-  color: #00e;
+  color: #0077cc;
   text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+nav ul {
+    display: flex;
+    list-style: none;
+}
+
+nav a {
+    padding: 0.5rem 1rem;
+    border-bottom: 2px solid transparent;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+nav a.active,
+nav a.ancestor {
+    border-bottom: 2px solid #0077cc;
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 2.5em;
+  margin-bottom: 0.5rem;
 }
